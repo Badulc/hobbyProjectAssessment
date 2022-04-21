@@ -24,48 +24,71 @@ import com.qa.hobbySnkrproject.domain.SneakerDom;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = {"classpath:sneaker-schema.sql", "classpath:sneaker-data.sql"}, executionPhase=ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:sneaker-schema.sql",
+		"classpath:sneaker-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 public class SneakerDomControllerIntegrationTest {
-	
+
 	@Autowired
 	private MockMvc mvc;
-	
+
 	@Autowired
 	private ObjectMapper mapper;
-	
+
 	@Test
 	void TestCreate() throws Exception {
 		SneakerDom testSneaker = new SneakerDom(null, "nike1", 1, 1, 1, "blue", "blue", "leather");
-		
+
 		String testSneakerDomAsJSON = this.mapper.writeValueAsString(testSneaker);
 		RequestBuilder req = post("/createSnkr").contentType(MediaType.APPLICATION_JSON).content(testSneakerDomAsJSON);
-		
+
 		SneakerDom testCreatedSneaker = new SneakerDom(3, "nike1", 1, 1, 1, "blue", "blue", "leather");
 		String testCreatedSneakerAsJSON = this.mapper.writeValueAsString(testCreatedSneaker);
-		
+
 		ResultMatcher checkStatus = status().isCreated();
 		ResultMatcher checkBody = content().json(testCreatedSneakerAsJSON);
-		
+
 		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
 	}
-	
+
 	@Test
 	void getAllTest() throws Exception {
 		RequestBuilder req = get("/getAllSnkr");
-		
-		List<SneakerDom> testSneaks = List.of(new SneakerDom(1, "nike1", 1, 1, 1, "blue", "blue", "leather"), new SneakerDom(2,"nike2", 2, 2, 2, "black", "black", "suede"));
+
+		List<SneakerDom> testSneaks = List.of(new SneakerDom(1, "nike1", 1, 1, 1, "blue", "blue", "leather"),
+				new SneakerDom(2, "nike2", 2, 2, 2, "black", "black", "suede"));
 		String json = this.mapper.writeValueAsString(testSneaks);
+
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkBody = content().json(json);
+
+		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+
+	}
+	
+	@Test
+	void getByIdTest() throws Exception {
+		RequestBuilder req = get("/getSnkr/1");
+		String json = this.mapper.writeValueAsString(new SneakerDom(1, "nike1", 1, 1, 1, "blue", "blue", "leather"));
 		
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(json);
 		
 		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
 		
-		
-		
 	}
 	
-	
-	
-
+	@Test 
+	void getByNameTesst() throws Exception {
+		RequestBuilder req = get("/getSnkrByName/nike1");
+		
+		List<SneakerDom> testSneaks = List.of(new SneakerDom(1, "nike1", 1, 1, 1, "blue", "blue", "leather"));
+		String json = this.mapper.writeValueAsString(testSneaks);
+		
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkBody = content().json(json);
+		
+		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+		}
+		
+		
 }
