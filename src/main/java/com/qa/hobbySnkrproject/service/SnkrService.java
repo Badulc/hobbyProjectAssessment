@@ -51,7 +51,7 @@ public class SnkrService implements ServiceIF<SneakerDom> {
 			existing.setName(repSnkr.getName());
 			existing.setserialNo(repSnkr.getserialNo());
 			existing.setSize(repSnkr.getSize());
-			existing.setCondition(repSnkr.getCondition());
+			existing.setCondit(repSnkr.getCondit());
 			existing.setColour1(repSnkr.getColour1());
 			existing.setColour2(repSnkr.getColour2());
 			existing.setMaterial(repSnkr.getMaterial());
@@ -84,8 +84,8 @@ public class SnkrService implements ServiceIF<SneakerDom> {
 			return found;
 		}
 		
-		public List<SneakerDom> getSnkrByCondition(Integer condition) {
-			List<SneakerDom> found = this.repo.findByCondition(condition);
+		public List<SneakerDom> getSnkrByCondit(Integer condit) {
+			List<SneakerDom> found = this.repo.findByCondit(condit);
 			return found;
 		}
 		

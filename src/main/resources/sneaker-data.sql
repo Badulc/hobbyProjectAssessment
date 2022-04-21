@@ -1,7 +1,7 @@
 insert into sneaker_dom ( 
 colour1, 
 colour2, 
-condition, 
+condit, 
 material, 
 name, 
 serial_no, 
@@ -11,7 +11,7 @@ values ('blue','blue',1,'leather','nike1',1,1);
 insert into sneaker_dom ( 
 colour1, 
 colour2, 
-condition, 
+condit, 
 material, 
 name, 
 serial_no, 

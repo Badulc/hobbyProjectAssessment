@@ -24,7 +24,7 @@ public class SneakerDom {
 	public Integer size;
 
 	@Column(nullable = false)
-	public Integer condition;
+	public Integer condit;
 
 	@Column(nullable = false)
 	public String colour1;
@@ -42,7 +42,7 @@ public class SneakerDom {
 		this.name = name;
 		this.serialNo = serialNo;
 		this.size = size;
-		this.condition = condition;
+		this.condit = condition;
 		this.colour1 = colour1;
 		this.colour2 = colour2;
 		this.material = material;
@@ -84,12 +84,12 @@ public class SneakerDom {
 		this.size = size;
 	}
 
-	public Integer getCondition() {
-		return condition;
+	public Integer getCondit() {
+		return condit;
 	}
 
-	public void setCondition(Integer condition) {
-		this.condition = condition;
+	public void setCondit(Integer condit) {
+		this.condit = condit;
 	}
 
 	public String getColour1() {
@@ -118,8 +118,8 @@ public class SneakerDom {
 
 	@Override
 	public String toString() {
-		return "SneakerDom [id=" + id + ", name=" + name + ", serialNo=" + serialNo + ", size=" + size + ", condition="
-				+ condition + ", colour1=" + colour1 + ", colour2=" + colour2 + ", material=" + material + "]";
+		return "SneakerDom [id=" + id + ", name=" + name + ", serialNo=" + serialNo + ", size=" + size + ", condit="
+				+ condit + ", colour1=" + colour1 + ", colour2=" + colour2 + ", material=" + material + "]";
 	}
 
 }
