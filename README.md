@@ -10,7 +10,16 @@ I used Jira software and a kanban board to manage my project deliverables utilis
 - acceptance criteria’s
 - moscow prioritasation labels
 ```
-Screenshots
+jira screenshot 1:
+![jiraboard](https://github.com/Badulc/hobbyProjectAssessment/blob/dev/documentation/backlog(sprint).png)
+
+jira screenshot 2:
+![jiraboard](https://github.com/Badulc/hobbyProjectAssessment/blob/dev/documentation/jira%20board%20should%20have.png)
+
+jira screenshot 3:
+![jiraboard](https://github.com/Badulc/hobbyProjectAssessment/blob/dev/documentation/sprint%201%20board.png)
+
+
 # Project Title
 ```
 - create sneakers and store them in a database
