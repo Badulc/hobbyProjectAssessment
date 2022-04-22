@@ -15,7 +15,7 @@ public interface SnkrRepo extends JpaRepository<SneakerDom, Integer>{
 	List<SneakerDom> findByNameIgnoreCase(String name);
 	List<SneakerDom> findBySerialNo(Integer serialNo);
 	List<SneakerDom> findBySize(Integer size);
-	List<SneakerDom> findByCondition(Integer condition);
+	List<SneakerDom> findByCondit(Integer condit);
 	List<SneakerDom> findByColour1IgnoreCase(String colour1);
 	List<SneakerDom> findByColour2IgnoreCase(String colour2);
 	List<SneakerDom> findByMaterialIgnoreCase(String material);

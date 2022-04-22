@@ -99,9 +99,9 @@ public class SneakerDomController {
 	}
 	
 	//read by condition - tested on postman
-	@GetMapping("/getSnkrByCondition/{condition}")
-	public ResponseEntity<List<SneakerDom>> getSneakerByCondition(@PathVariable Integer condition) {
-		List<SneakerDom> found = this.service.getSnkrByCondition(condition);
+	@GetMapping("/getSnkrByCondit/{condit}")
+	public ResponseEntity<List<SneakerDom>> getSneakerByCondit(@PathVariable Integer condit) {
+		List<SneakerDom> found = this.service.getSnkrByCondit(condit);
 		return ResponseEntity.ok(found);
 	}
 	

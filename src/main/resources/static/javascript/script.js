@@ -2,20 +2,13 @@
 
 import * as DOM from './dom.js';
 
-/* let addToList = str => {
-    let child = document.createElement(`li`);
-    child.innerHTML = str;
-    DOM.textOutput.appendChild(child);
-} */
-
-
 // POST function
 const post = () => {
     axios.post('http://localhost:8080/createSnkr/', {   
                               name : DOM.nameInput.value,
                               serialNo : DOM.serialNoInput.value, 
                               size : DOM.sizeInput.value,
-                              condition : DOM.conditionInput.value,
+                              condit : DOM.conditionInput.value,
                               colour1 : DOM.colour1Input.value,
                               colour2 : DOM.colour2Input.value,
                               material : DOM.materialInput.value})
@@ -35,7 +28,7 @@ const updateId = () => {
     name : DOM.updateName.value,
     serialNo : DOM.updateSerialNo.value, 
     size : DOM.updateSize.value,
-    condition : DOM.updateCondition.value,
+    condit : DOM.updateCondition.value,
     colour1 : DOM.updateColour1.value,
     colour2 : DOM.updateColour2.value,
     material : DOM.updateMaterial.value
@@ -43,7 +36,7 @@ const updateId = () => {
   }) 
   .then((response) => {
     console.log(response);
-    //get();
+    get();
   }).catch((err) => {
     console.log(err);
   });
