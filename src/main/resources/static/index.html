@@ -3,103 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>CRUD - Sneakers</title>
+    <style>
+    body button , body,footer{
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+    body {
+      background-color: lightblue;
+    }
+     label {
+       display: inline-block;
+       width: 150px;
+     }
+     input , select{
+        padding: 5px 10px;
+        margin:5px;
+        border: solid 1px black;
+      }
 
+     .createS , .updateS , .deleteS , .itemS{
+       margin-bottom: 10px;
+       margin: 10px;
+     }
+
+     div button {
+       background-color: #C1E1C1;
+     }
+
+     hr {
+       border: dashed 1px black;
+     }
+
+     h4 {
+       text-decoration: underline;
+     }
+     .footer {
+      height: 20px;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: black;
+      color: white;
+      text-align: center;
+   }
+   .footer a{
+     color: white;
+     text-decoration: none;
+   }
+    </style>
+</head>
+<header>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- <a class="navbar-brand" href="#">Cruddy Sneakers</a> -->
+        <img src="logo.png" alt="logo" width="150px" height="40px">
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">CRUD</a></li>
+        <li><a href="#">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 <body>
-    <h3>create sneaker</h3>
+
+  <hr>
+  <!--list output-->
+  <div class="itemS" style="float:right; display:inline;">
+  <h4>Items</h4>
+  <ul id="listOutput"></ul>
+  <button type="button" id="viewAllButton">View All Sneakers</button>
+  </div>
+  <div class="createS" >
+    <h4>Create Sneaker</h4>
+    <form>
     <!--name-->
     <label>Sneaker Name/Model:</label>
-    <input type="text" id="nameInput"/>
+    <input placeholder="Enter a name" type="text" id="nameInput" required/>
     <br>
     <!--serial no-->
     <label>Sneaker Serial No:</label>
-    <input type="text" id="serialNoInput"/>
+    <input placeholder="Enter a number" type="text" id="serialNoInput" required/>
     <br>
     <!--size-->
     <label>Sneaker Size:</label>
-    <input type="text" id="sizeInput"/>
+    <input placeholder="Enter a size" type="number" id="sizeInput">
+    </input>
     <br>
     <!--condition-->
     <label>Sneaker Condition:</label>
-    <input type="text" id="conditionInput"/>
+    <input placeholder="1-100" type="number" id="conditionInput" required min="0" max="100"/>
     <br>
     <!--colour1-->
-    <label>Sneaker primary colour:</label>
-    <input type="text" id="colour1Input"/>
+    <label>Sneaker Primary Colour:</label>
+    <input placeholder="Enter a colour" type="text" id="colour1Input" required/>
     <br>
     <!--colour2-->
     <label>Sneaker Secondary Colour:</label>
-    <input type="text" id="colour2Input"/>
+    <input placeholder="Enter a 2nd colour" type="text" id="colour2Input" required/>
     <br>
     <!--material-->
     <label>Sneaker Material:</label>
-    <input type="text" id="materialInput"/>
+    <input placeholder="Enter a material type" type="text" id="materialInput" required/>
     <br>
     <!--create button-->
     <button type="button" id="createButton">Create Sneaker</button>
-   
+  </form>
+  </div>
 
-    <h3>update sneaker</h3>
+<hr>
+<div class="updateS">
+    <h4>Update Sneaker</h4>
     <!--id-->
     <label>id:</label>
-    <input type="text" id="updateId"/>
+    <input placeholder="Select an ID to replace" type="text" id="updateId"  required/>
     <br>
     <!--name-->
     <label>Sneaker Name/Model:</label>
-    <input type="text" id="updateName"/>
+    <input placeholder="Enter a name" type="text" id="updateName" required/>
     <br>
     <!--serial no-->
     <label>Sneaker Serial No:</label>
-    <input type="text" id="updateSerialNo"/>
+    <input placeholder="Enter a serial number" type="text" id="updateSerialNo" required/>
     <br>
     <!--size-->
     <label>Sneaker Size:</label>
-    <input type="text" id="updateSize"/>
+    <input placeholder="Enter a size" type="number" id="updateSize">
+    </input>
     <br>
+
     <!--condition-->
     <label>Sneaker Condition:</label>
-    <input type="text" id="updateCondition"/>
+    <input placeholder="1-100" type="number" id="updateCondition" required min="0" max="100"/>
     <br>
     <!--colour1-->
-    <label>Sneaker primary colour:</label>
-    <input type="text" id="updateColour1"/>
+    <label>Sneaker Primary Colour:</label>
+    <input placeholder="Enter a colour" type="text" id="updateColour1" required/>
     <br>
     <!--colour2-->
     <label>Sneaker Secondary Colour:</label>
-    <input type="text" id="updateColour2"/>
+    <input placeholder="Enter a 2nd colour" type="text" id="updateColour2" required/>
     <br>
     <!--material-->
     <label>Sneaker Material:</label>
-    <input type="text" id="updateMaterial"/>
+    <input placeholder="Enter a material" type="text" id="updateMaterial" required/>
     <br>
     <!--update button-->
-    <button type="button" id="updateButton">update Sneaker</button>
-
-
+    <button type="button" id="updateButton">Update Sneaker</button>
+</div>
+<hr>
     <br>
+    <div class="deleteS">
     <!--delete-->
+    <h4>Delete Sneaker</h4>
     <label>id:</label>
     <br>
-    <input type="text" id="deleteId"/>
+    <input placeholder="Enter an ID to delete" type="text" id="deleteId" required/>
     <br>
-    <button type="button" id="deleteButton">delete Sneaker</button>
-
+    <button type="button" id="deleteButton">Delete Sneaker</button>
+</div>
     <br>
+<hr>
 
-    <!--list output-->
 
-    <h2>items</h2>
-    <button type="button" id="viewAllButton">view all Sneakers</button>
-    
-    
 
-    <ul id="listOutput"></ul>
+    <div class="footer">
 
+      
+      <p style="float:left;" color:white;><a href="mailto:badulchowdhury@proton.mb">Email Me</a></p>
+      <p style="float:right" color:white;>LinkedIn: Badul Chowdhury</p>
+      <p class="text-center text-white text-capitalize">Copyright &copy; 2022 designed by Badul</p>
+    </div>
 
     <script type="module" src="./javascript/script.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script

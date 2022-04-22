@@ -2,13 +2,6 @@
 
 import * as DOM from './dom.js';
 
-/* let addToList = str => {
-    let child = document.createElement(`li`);
-    child.innerHTML = str;
-    DOM.textOutput.appendChild(child);
-} */
-
-
 // POST function
 const post = () => {
     axios.post('http://localhost:8080/createSnkr/', {   
@@ -43,7 +36,7 @@ const updateId = () => {
   }) 
   .then((response) => {
     console.log(response);
-    //get();
+    get();
   }).catch((err) => {
     console.log(err);
   });
